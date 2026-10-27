@@ -1469,3 +1469,349 @@ a   { color: inherit; text-decoration: none; }
 
 .breadcrumb a { color: var(--accent); }
 .breadcrumb span { opacity: 0.5; }
+
+/* ============================================================
+   HAMBURGER BUTTON
+   ============================================================ */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 2.5px;
+  background: #ccc;
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.nav-hamburger:hover span { background: #fff; }
+
+@media (min-width: 768px) { .nav-hamburger { display: none; } }
+
+/* Hide regular nav links on mobile, show hamburger */
+@media (max-width: 767px) {
+  .nav-inner > a,
+  .nav-inner > .nav-dropdown {
+    display: none;
+  }
+  .nav-inner { justify-content: flex-end; padding: 0 1rem; height: 48px; display: flex; align-items: center; }
+}
+
+/* ============================================================
+   MOBILE FULL-SCREEN MENU
+   ============================================================ */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  max-width: 88vw;
+  height: 100%;
+  background: #fff;
+  z-index: 500;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.28s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.18);
+}
+
+.mobile-menu.is-open { right: 0; }
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 499;
+}
+
+.mobile-menu-overlay.is-open { display: block; }
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--accent);
+}
+
+.mobile-menu-brand {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-close:hover { color: #fff; }
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mobile-menu-nav > a,
+.mobile-menu-nav > details > summary {
+  display: block;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.1s;
+}
+
+.mobile-menu-nav > a:hover,
+.mobile-menu-nav > details > summary:hover { background: var(--bg-soft); }
+
+.mobile-menu-nav > details > summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.mobile-menu-nav > details[open] > summary::after { content: '−'; }
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-submenu a {
+  padding: 0.75rem 1.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+  display: block;
+}
+
+.mobile-submenu a:last-child { border-bottom: none; }
+.mobile-submenu a:hover { color: var(--accent); }
+
+.mobile-menu-social {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+  justify-content: center;
+}
+
+.mobile-menu-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  transition: background 0.15s, color 0.15s;
+}
+
+.mobile-menu-social a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.mobile-menu-social svg { width: 18px; height: 18px; }
+
+.mobile-menu-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-cta-book {
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+}
+
+.mobile-cta-phone {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ============================================================
+   TWO-BUTTON STICKY MOBILE CTA BAR
+   ============================================================ */
+.sticky-mobile-ctas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 0.625rem;
+  padding: 0.625rem 1rem calc(0.625rem + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1px solid var(--border);
+  z-index: 200;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+}
+
+.sticky-book {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.875rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.sticky-phone {
+  flex: 1;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.875rem 0.5rem;
+  border-radius: 9999px;
+}
+
+@media (min-width: 768px) { .sticky-mobile-ctas { display: none; } }
+
+/* ============================================================
+   BRAND LOGOS STRIP
+   ============================================================ */
+.brand-logos-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+}
+
+.brand-logos-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.brand-logos-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.brand-logos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo-item {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+.brand-logo-item:hover { color: var(--text); }
+
+/* ============================================================
+   FOOTER SOCIAL ICONS
+   ============================================================ */
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.footer-social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  transition: background 0.15s, color 0.15s;
+}
+
+.footer-social-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.footer-social-link svg { width: 16px; height: 16px; }
+
+/* Promotions */
+.promo-strip {
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.promo-strip a { color: rgba(255,255,255,0.9); text-decoration: underline; margin-left: 1rem; }

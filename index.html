@@ -36,8 +36,49 @@
     <a href="index.html#reviews">Reviews</a>
     <a href="index.html#about">About</a>
     <a href="contact.html">Contact</a>
+    <!-- Hamburger button — mobile only -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile full-screen menu -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <span class="mobile-menu-brand">Joe&#39;s Plumbing</span>
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="mobile-menu-nav">
+    <a href="index.html">Home</a>
+    <details>
+      <summary>Services</summary>
+      <div class="mobile-submenu">        <a href="services.html#service-1">Water Heaters</a>        <a href="services.html#service-2">Slab Leak Repair</a>        <a href="services.html#service-3">Drain Cleaning</a>        <a href="services.html#service-4">Repipes</a>        <a href="services.html#service-5">Gas Lines</a>      </div>
+    </details>
+    <a href="gallery.html">Our Work</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="index.html#about">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>  <div class="mobile-menu-ctas">
+    <a href="contact.html" class="mobile-cta-book">Book Now</a>
+    <a href="tel:8065551234" class="mobile-cta-phone">(806) 555-1234</a>
+  </div>
+</div>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+<script>
+(function(){
+  var btn=document.getElementById('nav-hamburger');
+  var menu=document.getElementById('mobile-menu');
+  var overlay=document.getElementById('mobile-menu-overlay');
+  var close=document.getElementById('mobile-menu-close');
+  function open(){menu.classList.add('is-open');overlay.classList.add('is-open');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){menu.classList.remove('is-open');overlay.classList.remove('is-open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  btn.addEventListener('click',open);
+  close.addEventListener('click',shut);
+  overlay.addEventListener('click',shut);
+})();
+</script>
 <main>
 
 <section class="hero" id="hero">  <img class="hero-photo" src="hero.jpg" alt="Joe replacing a water heater" loading="eager" fetchpriority="high" width="1080" height="540" onerror="this.style.display='none'">  <span class="emergency-badge">24/7 Emergency</span>  <div class="hero-overlay">
@@ -79,6 +120,12 @@
       </svg>
       Locally Owned &amp; Operated
     </div>
+  </div>
+</div>
+<div class="brand-logos-section">
+  <div class="brand-logos-inner">
+    <p class="brand-logos-label">Brands We Install &amp; Service</p>
+    <div class="brand-logos-row">      <div class="brand-logo-item">Rheem</div>      <div class="brand-logo-item">Bradford White</div>      <div class="brand-logo-item">Navien</div>      <div class="brand-logo-item">Kohler</div>      <div class="brand-logo-item">Moen</div>      <div class="brand-logo-item">Watts</div>    </div>
   </div>
 </div>
 <section class="section section--alt" id="services">
@@ -316,8 +363,7 @@
     <div>
       <p class="footer-name">Joe&#39;s Plumbing</p>
       <address class="footer-address">412 N Main St, Pampa, TX 79065</address>
-      <a class="footer-phone-link" href="tel:8065551234">(806) 555-1234</a>
-    </div>
+      <a class="footer-phone-link" href="tel:8065551234">(806) 555-1234</a>    </div>
     <div>      <p class="footer-hours-label">Hours</p>
       <ul class="footer-hours-list">        <li>
           <strong>Mon</strong>
@@ -337,8 +383,9 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Joe&#39;s Plumbing</span>    <span>Photos and reviews via Google</span>    <span class="footer-preview-note">Preview only &mdash; not indexed</span>  </div>
-</footer><div class="sticky-call-bar" aria-label="Call Joe&#39;s Plumbing">
-  <a href="tel:8065551234">(806) 555-1234 &mdash; Tap to Call</a>
+</footer><div class="sticky-mobile-ctas" aria-label="Quick actions">
+  <a href="contact.html" class="sticky-book">Book Now</a>
+  <a href="tel:8065551234" class="sticky-phone">(806) 555-1234</a>
 </div>
 <script>
 (function(){var t=new Date().getDay();var rows=document.querySelectorAll('#hours-table tr[data-jsday]');for(var i=0;i<rows.length;i++){if(parseInt(rows[i].getAttribute('data-jsday'),10)===t){rows[i].classList.add('today-row');break;}}})();
