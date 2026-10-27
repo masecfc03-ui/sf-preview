@@ -524,13 +524,13 @@ ul { list-style: none; }
    ============================================================ */
 .hero {
   position: relative;
-  min-height: 540px;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
 
-@media (min-width: 768px) { .hero { min-height: 640px; } }
+@media (min-width: 768px) { .hero { min-height: 100dvh; } }
 
 .hero-img-wrap {
   position: absolute;
@@ -558,20 +558,23 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(11,29,40,0.25) 0%, rgba(11,29,40,0.72) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.78) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 3rem 1.5rem 3.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+  .hero-content { padding-bottom: 5rem; }
+}
 @media (min-width: 1200px) {
-  .hero-content { padding-left: 2rem; padding-right: 2rem; max-width: 720px; margin: 0; }
+  .hero-content { padding-left: 3rem; padding-right: 3rem; max-width: 760px; margin: 0; padding-bottom: 5rem; }
 }
 
 .hero-trust-row {
@@ -640,20 +643,22 @@ ul { list-style: none; }
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 8vw, 3.25rem);
+  font-size: clamp(3rem, 9vw, 5.5rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
 }
 
 .hero-subhead {
-  font-size: 1.0625rem;
-  color: rgba(255,255,255,0.78);
-  margin-bottom: 2rem;
-  line-height: 1.5;
+  font-size: 1.125rem;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 520px;
 }
 
 /* Hero CTAs — stacked on phone, side by side on desktop */
