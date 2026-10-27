@@ -533,6 +533,16 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* No-photo fallback: dark gradient with subtle diagonal texture */
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 24px,
+      rgba(255,255,255,0.018) 24px,
+      rgba(255,255,255,0.018) 25px
+    ),
+    linear-gradient(160deg, #0b1d28 0%, #162d42 55%, #0f2236 100%);
 }
 .hero-img-wrap img {
   width: 100%;
@@ -545,7 +555,7 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(11,29,40,0.40) 0%, rgba(11,29,40,0.82) 100%);
+  background: linear-gradient(to bottom, rgba(11,29,40,0.25) 0%, rgba(11,29,40,0.72) 100%);
 }
 
 .hero-content {
