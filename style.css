@@ -793,7 +793,22 @@ ul { list-style: none; }
   box-shadow: var(--shadow-sm);
   transition: transform 150ms, box-shadow 150ms;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+.service-card-watermark {
+  position: absolute;
+  bottom: -12px;
+  right: -8px;
+  width: 96px;
+  height: 96px;
+  color: var(--accent);
+  opacity: 0.055;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+.service-card-watermark svg { width: 96px; height: 96px; }
+.service-card:hover .service-card-watermark { opacity: 0.10; }
 .service-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
