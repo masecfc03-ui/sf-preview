@@ -6,8 +6,8 @@
   <title>Our Work &mdash; Joe&#39;s Plumbing &mdash; Pampa, TX</title><meta name="robots" content="noindex, nofollow">  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231f4e79'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&amp;family=Lato:wght@400;700&display=swap">
-  <style>:root { --accent: #1f4e79; --font-heading: 'Oswald', Arial Narrow, sans-serif; --font-body: 'Lato', system-ui, sans-serif; }</style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&amp;family=Outfit:wght@400;600&display=swap">
+  <style>:root { --accent: #1f4e79; --font-display: 'Big Shoulders Display', sans-serif; --font-body: 'Outfit', system-ui, sans-serif; }</style>
   <link rel="stylesheet" href="style.css">
 </head>
 <body><div class="preview-banner" role="alert">Preview site &mdash; not live or indexed</div><header class="site-header" id="top">
@@ -134,6 +134,82 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Joe&#39;s Plumbing</span>    <span>Photos and reviews via Google</span>    <span class="footer-preview-note">Preview only &mdash; not indexed</span>  </div>
-</footer><div class="sticky-call-bar"><a href="tel:8065551234">(806) 555-1234 &mdash; Tap to Call</a></div>
-</body>
+</footer><div class="sticky-call-bar"><a href="tel:8065551234">(806) 555-1234 &mdash; Tap to Call</a></div><script>
+(function(){
+  // ── Header shrink after 80px ──────────────────────────────
+  var nav=document.getElementById('site-nav');
+  function onScroll(){
+    if(nav){
+      if(window.scrollY>80){nav.classList.add('scrolled');}
+      else{nav.classList.remove('scrolled');}
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  // ── Scroll reveal (fade up 16px, 400ms) ──────────────────
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-visible');});
+  }
+
+  // ── Today row highlight in hours tables ──────────────────
+  var t=new Date().getDay();
+  var rows=document.querySelectorAll('tr[data-jsday]');
+  for(var i=0;i<rows.length;i++){
+    if(parseInt(rows[i].getAttribute('data-jsday'),10)===t){
+      rows[i].classList.add('today-row');break;
+    }
+  }
+
+  // ── Hamburger menu ────────────────────────────────────────
+  var btn=document.getElementById('nav-hamburger');
+  var menu=document.getElementById('mobile-menu');
+  var closeBtn=document.getElementById('mobile-menu-close');
+  function openMenu(){
+    if(!menu)return;
+    menu.classList.add('is-open');
+    btn&&btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    if(!menu)return;
+    menu.classList.remove('is-open');
+    btn&&btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  btn&&btn.addEventListener('click',openMenu);
+  closeBtn&&closeBtn.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+  // Close on nav link tap
+  menu&&menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+  // ── Reviews carousel dots ─────────────────────────────────
+  var carousel=document.querySelector('.reviews-carousel');
+  var dotsWrap=document.querySelector('.reviews-dots');
+  if(carousel&&dotsWrap){
+    var cards=carousel.querySelectorAll('.review-card');
+    var dots=dotsWrap.querySelectorAll('.reviews-dot');
+    function updateDots(){
+      var idx=Math.round(carousel.scrollLeft/(carousel.scrollWidth/cards.length));
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    }
+    carousel.addEventListener('scroll',updateDots,{passive:true});
+    dots.forEach(function(d,i){
+      d.addEventListener('click',function(){
+        carousel.scrollTo({left:i*(carousel.scrollWidth/cards.length),behavior:'smooth'});
+      });
+    });
+    if(dots.length)dots[0].classList.add('active');
+  }
+})();
+</script></body>
 </html>
