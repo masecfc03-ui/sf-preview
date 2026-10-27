@@ -17,7 +17,102 @@
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"Joe's Plumbing","telephone":"+18065551234","url":"https://joes-plumbing-pampa.sites.sitefactory.com","address":{"@type":"PostalAddress","streetAddress":"412 N Main St","addressLocality":"Pampa","addressRegion":"TX","postalCode":"79065"},"openingHours":["Mo 7:00-18:00","Tu 7:00-18:00","We 7:00-18:00","Th 7:00-18:00","Fr 7:00-18:00","Sa 8:00-12:00"]}
   </script>
 </head>
-<body><div class="preview-banner" role="alert">Preview site &mdash; not live or indexed</div><header class="site-header" id="top">
+<body>
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <svg class="preloader-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Outer circle ring that draws in -->
+      <circle class="preloader-ring" cx="60" cy="60" r="52"
+              stroke="#1f4e79" stroke-width="3"
+              stroke-linecap="round"/>
+      <!-- Inner accent circle fill -->
+      <circle class="preloader-fill-circle" cx="60" cy="60" r="44"
+              fill="#1f4e79" fill-opacity="0"/>
+      <!-- Letter mark -->
+      <text class="preloader-letter" x="60" y="78"
+            font-family="'Big Shoulders Display', sans-serif"
+            font-size="60" font-weight="800"
+            fill="white" fill-opacity="0"
+            text-anchor="middle" letter-spacing="1">J</text>
+    </svg>
+    <p class="preloader-name">Joe&#39;s Plumbing</p>
+  </div>
+</div>
+
+<style>
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0B1D28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 300ms ease;
+}
+.preloader.done { opacity: 0; pointer-events: none; }
+.preloader-inner { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+.preloader-svg { width: min(60vw, 160px); height: min(60vw, 160px); }
+.preloader-ring {
+  stroke-dasharray: 326;
+  stroke-dashoffset: 326;
+  animation: ring-draw 600ms ease forwards;
+}
+.preloader-fill-circle {
+  animation: fill-in 400ms ease 600ms forwards;
+}
+.preloader-letter {
+  animation: letter-in 350ms ease 700ms forwards;
+}
+.preloader-name {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0);
+  animation: name-in 400ms ease 750ms forwards;
+}
+@keyframes ring-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fill-in {
+  to { fill-opacity: 1; }
+}
+@keyframes letter-in {
+  to { fill-opacity: 1; }
+}
+@keyframes name-in {
+  to { color: rgba(255,255,255,0.65); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader { display: none; }
+}
+</style>
+
+<script>
+(function(){
+  var key='preloader_shown';
+  var el=document.getElementById('preloader');
+  if(!el)return;
+  // Skip if already shown this session
+  if(sessionStorage.getItem(key)){
+    el.style.display='none';
+    return;
+  }
+  sessionStorage.setItem(key,'1');
+  // Hide at 1.3s or when hero image decoded — whichever is first
+  function dismiss(){el.classList.add('done');setTimeout(function(){el.style.display='none';},320);}
+  var timer=setTimeout(dismiss,1300);
+  // Also dismiss when hero image loads
+  var heroImg=document.querySelector('.hero-img-wrap img');
+  if(heroImg){
+    if(heroImg.complete){clearTimeout(timer);dismiss();}
+    else{heroImg.addEventListener('load',function(){clearTimeout(timer);dismiss();},{once:true});}
+  }
+})();
+</script><div class="preview-banner" role="alert">Preview site &mdash; not live or indexed</div><header class="site-header" id="top">
   <div class="header-inner">
     <div class="header-brand">
       <a class="header-name" href="index.html">Joe&#39;s Plumbing</a>      <span class="header-tagline">Serving Pampa, TX since 2012</span>    </div>
@@ -158,35 +253,23 @@
   }
 })();
 </script>
-<div class="trust-strip">
-  <div class="trust-strip-inner">    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
+<div class="trust-bar">
+  <div class="trust-bar-inner">    <div class="trust-fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Licensed &amp; Insured
-    </div>    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
+    </div>    <div class="trust-fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       14+ Years Experience
-    </div>    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-      </svg>
+    </div>    <div class="trust-fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       24/7 Emergency Service
-    </div>    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
+    </div>    <div class="trust-fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       Free Estimates
     </div>
-    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
-      Locally Owned &amp; Operated
+    <div class="trust-fact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Locally Owned
     </div>
   </div>
 </div><div class="brand-logos-section">
@@ -396,13 +479,24 @@
   </div>
 </section>
 
-<section class="section" id="service-area">
-  <div class="section-inner">
-    <div class="area-hours-grid">
-      <div class="area-column">
-        <h2 class="section-heading">Service Area</h2>
-        <ul class="area-list">          <li>Pampa</li>          <li>Borger</li>          <li>Miami</li>          <li>Wheeler</li>        </ul>        <p class="area-range">Within 40 miles of Pampa</p>      </div>
-      <div class="hours-column">
+<section class="service-area-section" id="service-area">
+  <div class="service-area-inner">
+    <div class="reveal">
+      <span class="section-label">Where We Work</span>
+      <h2 class="section-heading section-heading-underline">Service Area</h2>      <p class="section-sub" style="margin-bottom:1.5rem">Serving Pampa and surrounding communities within 40 miles.</p>    </div>
+    <div class="service-area-grid reveal">      <span class="service-area-town">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Pampa
+      </span>      <span class="service-area-town">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Borger
+      </span>      <span class="service-area-town">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Miami
+      </span>      <span class="service-area-town">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Wheeler
+      </span>    </div>
 <h3 class="subheading">Hours</h3>
 <table class="hours-table" id="hours-table">
   <tbody>    <tr data-jsday="1">
@@ -427,36 +521,36 @@
       <td>Sunday</td>
       <td class="hours-closed">Closed      </td>
     </tr>  </tbody>
-</table>      </div>
-    </div>
-  </div>
+</table>  </div>
 </section>
-<section class="section section--alt" id="tips">
+<section class="section section--surface" id="tips">
   <div class="section-inner">
-    <span class="section-label">Helpful Information</span>
-    <h2 class="section-heading">Tips From Joe&#39;s Plumbing</h2>
-    <div class="tips-grid">      <article class="tip-card">
+    <div class="reveal">
+      <span class="section-label">Helpful Information</span>
+      <h2 class="section-heading section-heading-underline">Tips From Joe&#39;s Plumbing</h2>
+    </div>
+    <div class="tips-grid reveal">      <article class="tip-card">
         <div class="tip-card-body">
-          <p class="tip-date">October 2026</p>
-          <h3 class="tip-title">5 Signs Your Water Heater Needs Replacing</h3>
-          <p class="tip-excerpt">If your water heater is over 10 years old or producing rusty water, it&#39;s time to call a plumber. Catching it early saves you from a flooded utility room.</p>
+          <p class="tip-card-date">October 2026</p>
+          <h3 class="tip-card-title">5 Signs Your Water Heater Needs Replacing</h3>
+          <p class="tip-card-excerpt">If your water heater is over 10 years old or producing rusty water, it&#39;s time to call a plumber. Catching it early saves you from a flooded utility room.</p>
         </div>
       </article>      <article class="tip-card">
         <div class="tip-card-body">
-          <p class="tip-date">September 2026</p>
-          <h3 class="tip-title">How to Know if You Have a Slab Leak</h3>
-          <p class="tip-excerpt">Unexplained spikes in your water bill, warm spots on the floor, or the sound of running water when everything is off — these are the three red flags.</p>
+          <p class="tip-card-date">September 2026</p>
+          <h3 class="tip-card-title">How to Know if You Have a Slab Leak</h3>
+          <p class="tip-card-excerpt">Unexplained spikes in your water bill, warm spots on the floor, or the sound of running water when everything is off — these are the three red flags.</p>
         </div>
       </article>      <article class="tip-card">
         <div class="tip-card-body">
-          <p class="tip-date">August 2026</p>
-          <h3 class="tip-title">When to Call a Plumber vs. DIY</h3>
-          <p class="tip-excerpt">A dripping faucet is a fair DIY project. A gas line repair is not. Here&#39;s a quick guide to when you should call a licensed master plumber.</p>
+          <p class="tip-card-date">August 2026</p>
+          <h3 class="tip-card-title">When to Call a Plumber vs. DIY</h3>
+          <p class="tip-card-excerpt">A dripping faucet is a fair DIY project. A gas line repair is not. Here&#39;s a quick guide to when you should call a licensed master plumber.</p>
         </div>
       </article>    </div>
-    <div class="tips-cta">
-      Have a question? <a href="#contact" style="color: var(--accent); font-weight:700;">Send us a message</a> or call <a href="tel:8065551234" style="color: var(--accent); font-weight:700;">(806) 555-1234</a> &mdash; we&rsquo;re happy to answer before you book.
-    </div>
+    <p class="reveal" style="margin-top:1.5rem;font-size:0.9375rem;color:var(--muted)">
+      Have a question? <a href="contact.html" style="color:var(--accent);font-weight:700">Send us a message</a> or call <a href="tel:8065551234" style="color:var(--accent);font-weight:700">(806) 555-1234</a>.
+    </p>
   </div>
 </section>
 <div class="cta-band reveal">

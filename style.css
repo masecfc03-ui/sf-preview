@@ -1684,3 +1684,6 @@ body { padding-bottom: calc(52px + 0.625rem + 0.625rem + env(safe-area-inset-bot
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+
+/* section--alt = surface (backward compat) */
+.section--alt { background: var(--surface); }
