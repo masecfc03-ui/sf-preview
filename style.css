@@ -845,6 +845,50 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   HOW IT WORKS — 4-step process
+   ============================================================ */
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 600px) { .how-it-works-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .how-it-works-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.how-step {
+  background: var(--bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+}
+.how-step-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  opacity: 0.18;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.how-step-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.how-step-desc {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ============================================================
    REVIEWS — snap carousel
    ============================================================ */
 .reviews-section {

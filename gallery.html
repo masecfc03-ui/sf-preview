@@ -9,6 +9,44 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&amp;family=Outfit:wght@400;600&display=swap">
   <style>:root { --accent: #1f4e79; --font-display: 'Big Shoulders Display', sans-serif; --font-body: 'Outfit', system-ui, sans-serif; }</style>
   <link rel="stylesheet" href="style.css">
+  <style>
+  /* Lightbox */
+  .lightbox-overlay {
+    position: fixed; inset: 0; z-index: 800;
+    background: rgba(11,29,40,0.95);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 200ms;
+    padding: 1.5rem;
+  }
+  .lightbox-overlay.is-open { opacity: 1; pointer-events: all; }
+  .lightbox-img {
+    max-width: 100%; max-height: 80vh;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-caption {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9375rem;
+    margin-top: 1rem;
+    text-align: center;
+    max-width: 600px;
+  }
+  .lightbox-close {
+    position: fixed; top: 1.25rem; right: 1.25rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    color: #fff; font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 150ms;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.20); }
+  .gallery-item { cursor: zoom-in; }
+  </style>
 </head>
 <body><div class="preview-banner" role="alert">Preview site &mdash; not live or indexed</div><header class="site-header" id="top">
   <div class="header-inner">
@@ -79,35 +117,56 @@
     </nav>
     <p class="page-hero-eyebrow">Portfolio</p>
     <h1 class="page-hero-title">Our Work in Pampa &amp; Surrounding Areas</h1>
-    <p class="page-hero-sub">Real jobs, real results. Every project completed by Joe&#39;s Plumbing — licensed and insured.</p>
+    <p class="page-hero-sub">Real jobs, real results. Every project completed by Joe&#39;s Plumbing &mdash; licensed and insured.</p>
   </div>
 </div>
 
 <main>
   <section class="section">
-    <div class="section-inner">      <div class="gallery-grid">        <div class="gallery-item">
+    <div class="section-inner">      <div class="gallery-grid reveal">        <button class="gallery-item"
+                onclick="openLightbox('job2.jpg', 'Finished repipe under a Pampa home')"
+                aria-label="View: Finished repipe under a Pampa home">
           <img src="job2.jpg" alt="Finished repipe under a Pampa home" loading="lazy">
-          <div class="gallery-item-overlay"><span class="gallery-item-label">Finished repipe under a Pampa home</span></div>
-        </div>        <div class="gallery-item">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Finished repipe under a Pampa home</span>
+          </div>
+        </button>        <button class="gallery-item"
+                onclick="openLightbox('job3.jpg', 'New tankless water heater installation')"
+                aria-label="View: New tankless water heater installation">
           <img src="job3.jpg" alt="New tankless water heater installation" loading="lazy">
-          <div class="gallery-item-overlay"><span class="gallery-item-label">New tankless water heater installation</span></div>
-        </div>        <div class="gallery-item">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">New tankless water heater installation</span>
+          </div>
+        </button>        <button class="gallery-item"
+                onclick="openLightbox('job4.jpg', 'Slab leak repair in progress')"
+                aria-label="View: Slab leak repair in progress">
           <img src="job4.jpg" alt="Slab leak repair in progress" loading="lazy">
-          <div class="gallery-item-overlay"><span class="gallery-item-label">Slab leak repair in progress</span></div>
-        </div>      </div>    </div>
-  </section>
-
-  <section style="background:var(--accent);padding:3rem 1.5rem;text-align:center">
-    <div style="max-width:640px;margin:0 auto">
-      <h2 style="font-family:var(--font-heading);font-size:2rem;color:#fff;font-weight:600;margin-bottom:0.75rem">Want Work Like This?</h2>
-      <p style="color:rgba(255,255,255,0.82);margin-bottom:1.75rem">Get a free estimate. We&rsquo;ll come out, look at the job, and give you a straight price.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="contact.html" style="background:#fff;color:var(--accent);font-family:var(--font-heading);font-weight:600;font-size:1.0625rem;padding:0.9375rem 2.25rem;border-radius:3px;letter-spacing:0.04em;text-transform:uppercase">Get Free Quote</a>
-        <a href="tel:8065551234" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.7);font-family:var(--font-heading);font-weight:600;font-size:1.0625rem;padding:0.9375rem 2.25rem;border-radius:3px;letter-spacing:0.04em;text-transform:uppercase">(806) 555-1234</a>
-      </div>
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Slab leak repair in progress</span>
+          </div>
+        </button>      </div>
     </div>
   </section>
+
+  <div class="cta-band reveal">
+    <div class="cta-band-inner">
+      <h2 class="cta-band-headline">Want Work Like This?</h2>
+      <p class="cta-band-sub">Get a free estimate. We&rsquo;ll come out, look at the job, and give you a straight price.</p>
+      <div class="cta-band-btns">
+        <a href="contact.html" class="btn btn-secondary">Get a Price</a>
+        <a href="tel:8065551234" class="btn btn-ghost">(806) 555-1234</a>
+      </div>
+    </div>
+  </div>
 </main>
+
+<!-- Lightbox overlay -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"
+     onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <p class="lightbox-caption" id="lightbox-caption"></p>
+</div>
 
 <footer class="site-footer" id="footer">
   <div class="footer-grid">
@@ -134,7 +193,10 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Joe&#39;s Plumbing</span>    <span>Photos and reviews via Google</span>    <span class="footer-preview-note">Preview only &mdash; not indexed</span>  </div>
-</footer><div class="sticky-call-bar"><a href="tel:8065551234">(806) 555-1234 &mdash; Tap to Call</a></div><script>
+</footer><div class="sticky-mobile-ctas" aria-label="Quick contact">
+  <a href="contact.html" class="sticky-book">Book Now</a>
+  <a href="tel:8065551234" class="sticky-phone">(806) 555-1234</a>
+</div><script>
 (function(){
   // ── Header shrink after 80px ──────────────────────────────
   var nav=document.getElementById('site-nav');
@@ -211,5 +273,21 @@
     if(dots.length)dots[0].classList.add('active');
   }
 })();
-</script></body>
+</script><script>
+function openLightbox(src, caption) {
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-img').alt = caption;
+  document.getElementById('lightbox-caption').textContent = caption;
+  lb.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
 </html>
