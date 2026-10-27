@@ -153,6 +153,9 @@ ul { list-style: none; }
   line-height: 1.1;
 }
 
+.header-logo { display: flex; align-items: center; text-decoration: none; }
+.header-logo img { display: block; height: 44px; width: auto; }
+
 .header-tagline {
   font-size: 0.8125rem;
   color: var(--muted);
