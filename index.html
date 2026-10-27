@@ -49,32 +49,99 @@
   }
   </script>
 </head>
-<body><div class="preview-banner" role="alert">Preview site &mdash; not indexed or live.</div>
-<!-- Top bar — desktop only -->
-<header class="top-bar">
-  <div class="top-bar-inner">
-    <span class="top-bar-name">Joe&#39;s Plumbing</span>
-    <a class="top-bar-phone" href="tel:8065551234">(806) 555-1234</a>
+<body><div class="preview-banner" role="alert">Preview site &mdash; not live or indexed</div>
+<!-- ======= HEADER ======= -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="header-name">Joe&#39;s Plumbing</span>      <span class="header-tagline">Serving Pampa, TX since 2012</span>    </div>
+    <div class="header-actions">
+      <a class="btn-call" href="tel:8065551234">(806) 555-1234</a>
+      <a class="btn-quote" href="#contact">Free Quote</a>
+    </div>
   </div>
 </header>
 
+<!-- ======= NAV ======= -->
+<nav class="site-nav" id="site-nav" aria-label="Page sections">
+  <div class="nav-inner">
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#about">About</a>
+    <a href="#service-area">Service Area</a>
+    <a href="#contact">Free Quote</a>
+  </div>
+</nav>
+
 <main>
-<section class="hero" id="hero">  <img class="hero-photo" src="hero.jpg" alt="Joe replacing a water heater" loading="eager" fetchpriority="high" width="960" height="520" onerror="this.style.display='none'">  <span class="emergency-badge">24/7 Emergency</span>  <div class="hero-overlay">
+<section class="hero" id="hero">  <img class="hero-photo" src="hero.jpg" alt="Joe replacing a water heater" loading="eager" fetchpriority="high" width="1080" height="540" onerror="this.style.display='none'">  <span class="emergency-badge">24/7 Emergency</span>  <div class="hero-overlay">
     <div class="hero-content">
       <h1 class="hero-headline">Plumbing in Pampa since 2012</h1>
       <p class="hero-subhead">Water heaters, slab leaks, drain cleaning. Same day most days.</p>
-      <a class="hero-cta" href="tel:8065551234">Call Now &mdash; (806) 555-1234</a>
+      <div class="hero-ctas">
+        <a class="hero-cta" href="tel:8065551234">Call Now &mdash; (806) 555-1234</a>
+        <a class="hero-cta hero-cta--outline" href="#contact">Get Free Quote</a>
+      </div>
     </div>
-  </div></section><section class="section section--alt" id="services">
-  <div class="section-inner">
-    <h2 class="section-heading">What We Do</h2>
-    <ul class="services-list">      <li>Water heaters</li>      <li>Slab leak repair</li>      <li>Drain cleaning</li>      <li>Repipes</li>      <li>Gas lines</li>    </ul>
-    <div class="services-meta">      <p>Licensed &amp; Insured &nbsp;&middot;&nbsp; TSBPE M-12345</p>      <p>24/7 emergency calls welcome.</p>    </div>
+  </div></section><div class="trust-strip">
+  <div class="trust-strip-inner">    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      Licensed &amp; Insured
+    </div>    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      14+ Years Experience
+    </div>    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+      24/7 Emergency Service
+    </div>    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      Free Estimates
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Locally Owned &amp; Operated
+    </div>
   </div>
+</div><section class="section section--alt" id="services">
+  <div class="section-inner">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-heading">Our Services</h2>
+    <div class="services-grid">      <div class="service-card">
+        <span class="service-card-name">Water heaters</span>
+      </div>      <div class="service-card">
+        <span class="service-card-name">Slab leak repair</span>
+      </div>      <div class="service-card">
+        <span class="service-card-name">Drain cleaning</span>
+      </div>      <div class="service-card">
+        <span class="service-card-name">Repipes</span>
+      </div>      <div class="service-card">
+        <span class="service-card-name">Gas lines</span>
+      </div>    </div>    <div class="services-meta">      <span>Licensed &amp; Insured &nbsp;&middot;&nbsp; TSBPE M-12345</span>      <span>24/7 emergency calls welcome &mdash; same-day service most days</span>    </div>  </div>
 </section><section class="section" id="reviews">
   <div class="section-inner">
-    <h2 class="section-heading">What Customers Say</h2>
-    <div class="reviews-list">      <div class="review-card">
+    <span class="section-label">Customer Feedback</span>
+    <h2 class="section-heading">What Our Customers Say</h2>    <div class="reviews-intro">
+      <div class="reviews-rating-big">
+        <span class="reviews-rating-num">5.0</span>
+        <span class="reviews-rating-stars">★★★★★</span>
+        <span class="reviews-rating-label">Google Reviews</span>
+      </div>
+      <p class="reviews-tagline">Joe&#39;s Plumbing consistently earns 5-star reviews across Pampa and the surrounding area. See what neighbors are saying about our work.</p>
+    </div>
+
+    <div class="reviews-grid reviews-grid--three">      <div class="review-card">
         <div class="review-stars" aria-label="5 out of 5">★★★★★</div>
         <p class="review-text">Came out same day and fixed our slab leak. Knew exactly what was wrong and had it done by noon. Fair price.</p>
         <div class="review-meta">
@@ -105,11 +172,30 @@
       Reviews from Google
     </div>  </div>
 </section>
-  <!-- About -->
+  <!-- ======= ABOUT ======= -->
   <section class="section section--alt" id="about">
     <div class="section-inner">
-      <h2 class="section-heading">About Joe&#39;s Plumbing</h2>
-      <p class="about-text">Joe has run the shop since 2012, handling everything from busted water heaters to full repipes across the Texas Panhandle. He&#39;s a licensed master plumber with 14 years of experience and shows up when he says he will.</p>      <p class="years-served">Serving Pampa for 14 years.</p>    </div>
+      <div class="about-grid">
+        <div>
+          <span class="section-label">Our Story</span>
+          <h2 class="section-heading">About Joe&#39;s Plumbing</h2>
+          <p class="about-text">Joe has run the shop since 2012, handling everything from busted water heaters to full repipes across the Texas Panhandle. He&#39;s a licensed master plumber with 14 years of experience and shows up when he says he will.</p>
+        </div>
+        <div class="about-stats">          <div class="stat-item">
+            <div class="stat-number">14+</div>
+            <div class="stat-label">Years in Business</div>
+          </div>          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Services Offered</div>
+          </div>          <div class="stat-item">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Cities Served</div>
+          </div>          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Emergency Service</div>
+          </div>        </div>
+      </div>
+    </div>
   </section>
 
 <section class="section" id="service-area">
@@ -146,6 +232,47 @@
 </table>      </div>
     </div>
   </div>
+</section><section class="section--quote" id="contact">
+  <div class="section-inner">
+    <div class="quote-grid">
+      <!-- Copy -->
+      <div class="quote-copy">
+        <span class="section-label" style="color:#93c5fd">Free Estimate</span>
+        <h2 class="section-heading section-heading--light">Get Your Free Quote</h2>
+        <p class="quote-promise">Fill out the form and we&rsquo;ll follow up within one business day. No obligation, no pressure &mdash; just a straight answer on what the job costs.</p>
+        <ul class="quote-bullets">
+          <li>Free on-site estimate</li>
+          <li>Transparent pricing, no hidden fees</li>
+          <li>Licensed &amp; insured in Texas</li>          <li>Emergency service available 24/7</li>        </ul>
+        <div class="quote-divider"></div>
+        <p class="quote-phone">Prefer to call? <a href="tel:8065551234">(806) 555-1234</a></p>
+      </div>
+      <!-- Form -->
+      <form class="quote-form" action="#" onsubmit="return false;" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="q-name">Name</label>
+            <input type="text" id="q-name" name="name" placeholder="John Smith" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="q-phone">Phone</label>
+            <input type="tel" id="q-phone" name="phone" placeholder="(806) 555-0000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="q-service">Service needed</label>
+          <select id="q-service" name="service">
+            <option value="">— Select a service —</option>            <option>Water heaters</option>            <option>Slab leak repair</option>            <option>Drain cleaning</option>            <option>Repipes</option>            <option>Gas lines</option>            <option>Not sure / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="q-notes">Description (optional)</label>
+          <textarea id="q-notes" name="notes" rows="3" placeholder="Briefly describe the issue or job..."></textarea>
+        </div>
+        <button type="submit" class="quote-submit">Send Request &rarr;</button>
+      </form>
+    </div>
+  </div>
 </section></main>
 
 <footer class="site-footer" id="footer">
@@ -175,14 +302,13 @@
   <div class="footer-bottom">
     <span>&copy; 2026 Joe&#39;s Plumbing</span>    <span>Photos and reviews via Google</span>    <span class="footer-preview-note">Preview only &mdash; not indexed</span>  </div>
 </footer>
-<!-- Sticky call bar — mobile only, always visible -->
+<!-- Sticky call bar — mobile only -->
 <div class="sticky-call-bar" aria-label="Call Joe&#39;s Plumbing">
   <a href="tel:8065551234">(806) 555-1234 &mdash; Tap to Call</a>
 </div>
 
 <script>
 (function () {
-  // Highlight today's row in hours table
   var today = new Date().getDay();
   var rows = document.querySelectorAll('#hours-table tr[data-jsday]');
   for (var i = 0; i < rows.length; i++) {
